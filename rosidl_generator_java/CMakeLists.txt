@@ -28,7 +28,7 @@ ament_index_register_resource("rosidl_generator_packages")
 
 if(BUILD_TESTING)
   find_package(rosidl_cmake REQUIRED)
-  find_package(rosidl_generator_c REQUIRED)
+  find_package(rosidl_runtime_c REQUIRED)
   find_package(test_interface_files REQUIRED)
 
   find_package(ament_lint_auto REQUIRED)
