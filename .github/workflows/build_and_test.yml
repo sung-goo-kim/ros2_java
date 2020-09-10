@@ -25,7 +25,7 @@ jobs:
     - name: Install Java
       run: |
         sudo apt-get update -qq
-        sudo apt-get install -y default-jdk gradle
+        sudo apt-get install -y openjdk-8-jdk gradle
     - name: Setup locale for ROS 2
       run: |
         sudo locale-gen en_US en_US.UTF-8
