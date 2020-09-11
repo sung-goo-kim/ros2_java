@@ -25,8 +25,8 @@ repositories:
     version: dashing
   ros2_java/ros2_java:
     type: git
-    url: https://github.com/ros2-java/ros2_java.git
-    version: dashing
+    url: https://github.com/sung-goo-kim/ros2_java.git
+    version: dev/cleanup-nodes
   ros2_java/ros2_java_examples:
     type: git
     url: https://github.com/ros2-java/ros2_java_examples.git

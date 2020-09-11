@@ -153,8 +153,8 @@ repositories:
     version: dashing
   ros2_java/ros2_java:
     type: git
-    url: https://github.com/ros2-java/ros2_java
-    version: jacob/android_instructions
+    url: https://github.com/sung-goo-kim/ros2_java
+    version: dev/android_instructions
   ros2_java/ros2_android:
     type: git
     url: https://github.com/ros2-java/ros2_android.git
