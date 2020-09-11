@@ -102,9 +102,12 @@ public final class RCLJava {
 
       node.dispose();
     }
+    nodes.clear();
+
     for (Context context : contexts) {
       context.dispose();
     }
+    contexts.clear();
   }
 
   static {
