@@ -181,12 +181,12 @@ public class NodeTest {
     RCLJava.shutdown();
   }
 
-  @Test
+  @Test(timeout = 1000)
   public final void testCreate() {
     assertNotEquals(0, node.getHandle());
   }
 
-  @Test
+  @Test(timeout = 1000)
   public final void testPubSubStdString() throws Exception {
     Publisher<std_msgs.msg.String> publisher =
         node.<std_msgs.msg.String>createPublisher(std_msgs.msg.String.class, "test_topic_string");
@@ -215,7 +215,7 @@ public class NodeTest {
     assertEquals(0, subscription.getHandle());
   }
 
-  @Test
+  @Test(timeout = 1000)
   public final void testPubSubBoundedArrayNested() throws Exception {
     Publisher<rcljava.msg.BoundedArrayNested> publisher =
         node.<rcljava.msg.BoundedArrayNested>createPublisher(
@@ -257,7 +257,7 @@ public class NodeTest {
     assertEquals(0, subscription.getHandle());
   }
 
-  @Test
+  @Test(timeout = 1000)
   public final void testPubSubBoundedArrayPrimitives() throws Exception {
     Publisher<rcljava.msg.BoundedArrayPrimitives> publisher =
         node.<rcljava.msg.BoundedArrayPrimitives>createPublisher(
@@ -331,7 +331,7 @@ public class NodeTest {
     assertEquals(0, subscription.getHandle());
   }
 
-  @Test
+  @Test(timeout = 1000)
   public final void testPubSubBuiltins() throws Exception {
     Publisher<rcljava.msg.Builtins> publisher = node.<rcljava.msg.Builtins>createPublisher(
         rcljava.msg.Builtins.class, "test_topic_builtins");
@@ -377,7 +377,7 @@ public class NodeTest {
     assertEquals(0, subscription.getHandle());
   }
 
-  @Test
+  @Test(timeout = 1000)
   public final void testPubSubDynamicArrayNested() throws Exception {
     Publisher<rcljava.msg.DynamicArrayNested> publisher =
         node.<rcljava.msg.DynamicArrayNested>createPublisher(
@@ -419,7 +419,7 @@ public class NodeTest {
     assertEquals(0, subscription.getHandle());
   }
 
-  @Test
+  @Test(timeout = 1000)
   public final void testPubSubDynamicArrayPrimitives() throws Exception {
     Publisher<rcljava.msg.DynamicArrayPrimitives> publisher =
         node.<rcljava.msg.DynamicArrayPrimitives>createPublisher(
@@ -493,7 +493,7 @@ public class NodeTest {
     assertEquals(0, subscription.getHandle());
   }
 
-  @Test
+  @Test(timeout = 1000)
   public final void testPubSubEmpty() throws Exception {
     Publisher<rcljava.msg.Empty> publisher =
         node.<rcljava.msg.Empty>createPublisher(rcljava.msg.Empty.class, "test_topic_empty");
@@ -520,7 +520,7 @@ public class NodeTest {
     assertEquals(0, subscription.getHandle());
   }
 
-  @Test
+  @Test(timeout = 1000)
   public final void testPubSubFieldsWithSameType() throws Exception {
     Publisher<rcljava.msg.FieldsWithSameType> publisher =
         node.<rcljava.msg.FieldsWithSameType>createPublisher(
@@ -565,7 +565,7 @@ public class NodeTest {
     assertEquals(0, subscription.getHandle());
   }
 
-  @Test
+  @Test(timeout = 1000)
   public final void testPubSubNested() throws Exception {
     Publisher<rcljava.msg.Nested> publisher =
         node.<rcljava.msg.Nested>createPublisher(rcljava.msg.Nested.class, "test_topic_nested");
@@ -600,7 +600,7 @@ public class NodeTest {
     assertEquals(0, subscription.getHandle());
   }
 
-  @Test
+  @Test(timeout = 1000)
   public final void testPubSubPrimitives() throws Exception {
     Publisher<rcljava.msg.Primitives> publisher = node.<rcljava.msg.Primitives>createPublisher(
         rcljava.msg.Primitives.class, "test_topic_primitives");
@@ -630,7 +630,7 @@ public class NodeTest {
     assertEquals(0, subscription.getHandle());
   }
 
-  @Test
+  @Test(timeout = 1000)
   public final void testPubSubStaticArrayNested() throws Exception {
     Publisher<rcljava.msg.StaticArrayNested> publisher =
         node.<rcljava.msg.StaticArrayNested>createPublisher(
@@ -685,7 +685,7 @@ public class NodeTest {
     assertEquals(0, subscription.getHandle());
   }
 
-  @Test
+  @Test(timeout = 1000)
   public final void testPubSubStaticArrayPrimitives() throws Exception {
     Publisher<rcljava.msg.StaticArrayPrimitives> publisher =
         node.<rcljava.msg.StaticArrayPrimitives>createPublisher(
@@ -760,7 +760,7 @@ public class NodeTest {
     assertEquals(0, subscription.getHandle());
   }
 
-  @Test
+  @Test(timeout = 1000)
   public final void testPubUInt32() throws Exception {
     Publisher<rcljava.msg.UInt32> publisher =
         node.<rcljava.msg.UInt32>createPublisher(rcljava.msg.UInt32.class, "test_topic_uint32");
@@ -789,7 +789,7 @@ public class NodeTest {
     assertEquals(0, subscription.getHandle());
   }
 
-  @Test
+  @Test(timeout = 1000)
   public final void testPubUInt32MultipleNodes() throws Exception {
     Executor executor = new MultiThreadedExecutor();
 
