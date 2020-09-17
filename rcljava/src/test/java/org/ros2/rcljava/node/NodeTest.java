@@ -209,8 +209,11 @@ public class NodeTest {
     std_msgs.msg.String value = future.get();
     assertEquals("Hello", value.getData());
 
+    node.removePublisher(publisher);
     publisher.dispose();
     assertEquals(0, publisher.getHandle());
+
+    node.removeSubscription(subscription);
     subscription.dispose();
     assertEquals(0, subscription.getHandle());
   }
@@ -251,8 +254,11 @@ public class NodeTest {
         float64Value2, int8Value2, uint8Value2, int16Value2, uint16Value2, int32Value2,
         uint32Value2, int64Value2, uint64Value2, stringValue2));
 
+    node.removePublisher(publisher);
     publisher.dispose();
     assertEquals(0, publisher.getHandle());
+
+    node.removeSubscription(subscription);
     subscription.dispose();
     assertEquals(0, subscription.getHandle());
   }
@@ -325,8 +331,11 @@ public class NodeTest {
     assertEquals(uint64Values, value.getUint64Values());
     assertEquals(stringValues, value.getStringValues());
 
+    node.removePublisher(publisher);
     publisher.dispose();
     assertEquals(0, publisher.getHandle());
+
+    node.removeSubscription(subscription);
     subscription.dispose();
     assertEquals(0, subscription.getHandle());
   }
@@ -371,8 +380,11 @@ public class NodeTest {
     assertEquals(4321, timeValue.getSec());
     assertEquals(7654, timeValue.getNanosec());
 
+    node.removePublisher(publisher);
     publisher.dispose();
     assertEquals(0, publisher.getHandle());
+
+    node.removeSubscription(subscription);
     subscription.dispose();
     assertEquals(0, subscription.getHandle());
   }
@@ -413,8 +425,11 @@ public class NodeTest {
         float64Value2, int8Value2, uint8Value2, int16Value2, uint16Value2, int32Value2,
         uint32Value2, int64Value2, uint64Value2, stringValue2));
 
+    node.removePublisher(publisher);
     publisher.dispose();
     assertEquals(0, publisher.getHandle());
+
+    node.removeSubscription(subscription);
     subscription.dispose();
     assertEquals(0, subscription.getHandle());
   }
@@ -487,8 +502,11 @@ public class NodeTest {
     assertEquals(uint64Values, value.getUint64Values());
     assertEquals(stringValues, value.getStringValues());
 
+    node.removePublisher(publisher);
     publisher.dispose();
     assertEquals(0, publisher.getHandle());
+
+    node.removeSubscription(subscription);
     subscription.dispose();
     assertEquals(0, subscription.getHandle());
   }
@@ -514,8 +532,11 @@ public class NodeTest {
     rcljava.msg.Empty value = future.get();
     assertNotEquals(null, value);
 
+    node.removePublisher(publisher);
     publisher.dispose();
     assertEquals(0, publisher.getHandle());
+
+    node.removeSubscription(subscription);
     subscription.dispose();
     assertEquals(0, subscription.getHandle());
   }
@@ -559,8 +580,11 @@ public class NodeTest {
         float64Value2, int8Value2, uint8Value2, int16Value2, uint16Value2, int32Value2,
         uint32Value2, int64Value2, uint64Value2, stringValue2));
 
+    node.removePublisher(publisher);
     publisher.dispose();
     assertEquals(0, publisher.getHandle());
+
+    node.removeSubscription(subscription);
     subscription.dispose();
     assertEquals(0, subscription.getHandle());
   }
@@ -594,8 +618,11 @@ public class NodeTest {
         float64Value1, int8Value1, uint8Value1, int16Value1, uint16Value1, int32Value1,
         uint32Value1, int64Value1, uint64Value1, stringValue1));
 
+    node.removePublisher(publisher);
     publisher.dispose();
     assertEquals(0, publisher.getHandle());
+
+    node.removeSubscription(subscription);
     subscription.dispose();
     assertEquals(0, subscription.getHandle());
   }
@@ -624,8 +651,11 @@ public class NodeTest {
         float64Value1, int8Value1, uint8Value1, int16Value1, uint16Value1, int32Value1,
         uint32Value1, int64Value1, uint64Value1, stringValue1));
 
+    node.removePublisher(publisher);
     publisher.dispose();
     assertEquals(0, publisher.getHandle());
+
+    node.removeSubscription(subscription);
     subscription.dispose();
     assertEquals(0, subscription.getHandle());
   }
@@ -679,8 +709,11 @@ public class NodeTest {
         float64Value2, int8Value2, uint8Value2, int16Value2, uint16Value2, int32Value2,
         uint32Value2, int64Value2, uint64Value2, stringValue2));
 
+    node.removePublisher(publisher);
     publisher.dispose();
     assertEquals(0, publisher.getHandle());
+
+    node.removeSubscription(subscription);
     subscription.dispose();
     assertEquals(0, subscription.getHandle());
   }
@@ -754,8 +787,11 @@ public class NodeTest {
     assertEquals(uint64Values, value.getUint64Values());
     assertEquals(stringValues, value.getStringValues());
 
+    node.removePublisher(publisher);
     publisher.dispose();
     assertEquals(0, publisher.getHandle());
+
+    node.removeSubscription(subscription);
     subscription.dispose();
     assertEquals(0, subscription.getHandle());
   }
@@ -783,8 +819,11 @@ public class NodeTest {
     rcljava.msg.UInt32 value = future.get();
     assertEquals(12345, value.getData());
 
+    node.removePublisher(publisher);
     publisher.dispose();
     assertEquals(0, publisher.getHandle());
+
+    node.removeSubscription(subscription);
     subscription.dispose();
     assertEquals(0, subscription.getHandle());
   }
@@ -848,10 +887,15 @@ public class NodeTest {
     rcljava.msg.UInt32 valueTwo = futureTwo.get();
     assertEquals(54321, valueTwo.getData());
 
+    node.removePublisher(publisher);
     publisher.dispose();
     assertEquals(0, publisher.getHandle());
+
+    node.removeSubscription(subscriptionOne);
     subscriptionOne.dispose();
     assertEquals(0, subscriptionOne.getHandle());
+
+    node.removeSubscription(subscriptionTwo);
     subscriptionTwo.dispose();
     assertEquals(0, subscriptionTwo.getHandle());
   }
