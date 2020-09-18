@@ -789,57 +789,46 @@ public class NodeTest {
     assertEquals(0, subscription.getHandle());
   }
 
-  @Test
+  @Test(timeout = 1000)
   public final void testPubUInt32MultipleNodes() throws Exception {
-    Executor executor = new MultiThreadedExecutor();
 
-    final Node publisherNode = RCLJava.createNode("publisher_node");
-    final Node subscriptionNodeOne = RCLJava.createNode("subscription_node_one");
-    final Node subscriptionNodeTwo = RCLJava.createNode("subscription_node_two");
-
-    Publisher<rcljava.msg.UInt32> publisher = publisherNode.<rcljava.msg.UInt32>createPublisher(
+    Publisher<rcljava.msg.UInt32> publisher = node.<rcljava.msg.UInt32>createPublisher(
         rcljava.msg.UInt32.class, "test_topic_multiple");
 
-    RCLFuture<rcljava.msg.UInt32> futureOne = new RCLFuture<rcljava.msg.UInt32>(executor);
+    RCLFuture<rcljava.msg.UInt32> futureOne = new RCLFuture<rcljava.msg.UInt32>(new WeakReference<Node>(node));
 
     Subscription<rcljava.msg.UInt32> subscriptionOne =
-        subscriptionNodeOne.<rcljava.msg.UInt32>createSubscription(rcljava.msg.UInt32.class,
+        node.<rcljava.msg.UInt32>createSubscription(rcljava.msg.UInt32.class,
             "test_topic_multiple", new TestConsumer<rcljava.msg.UInt32>(futureOne));
 
-    RCLFuture<rcljava.msg.UInt32> futureTwo = new RCLFuture<rcljava.msg.UInt32>(executor);
+    RCLFuture<rcljava.msg.UInt32> futureTwo = new RCLFuture<rcljava.msg.UInt32>(new WeakReference<Node>(node));
 
     Subscription<rcljava.msg.UInt32> subscriptionTwo =
-        subscriptionNodeTwo.<rcljava.msg.UInt32>createSubscription(rcljava.msg.UInt32.class,
+        node.<rcljava.msg.UInt32>createSubscription(rcljava.msg.UInt32.class,
             "test_topic_multiple", new TestConsumer<rcljava.msg.UInt32>(futureTwo));
 
     rcljava.msg.UInt32 msg = new rcljava.msg.UInt32();
     msg.setData(54321);
 
-    ComposableNode composablePublisherNode = new ComposableNode() {
-      public Node getNode() {
-        return publisherNode;
-      }
-    };
+    try {
+      Thread.sleep(100);
+    } catch (Exception e) {
+      //TODO: handle exception
+    }
 
-    ComposableNode composableSubscriptionNodeOne = new ComposableNode() {
-      public Node getNode() {
-        return subscriptionNodeOne;
-      }
-    };
+    publisher.publish(msg);
 
-    ComposableNode composableSubscriptionNodeTwo = new ComposableNode() {
-      public Node getNode() {
-        return subscriptionNodeTwo;
-      }
-    };
+    try {
+      Thread.sleep(100);
+    } catch (Exception e) {
+      //TODO: handle exception
+    }
 
-    executor.addNode(composablePublisherNode);
-    executor.addNode(composableSubscriptionNodeOne);
-    executor.addNode(composableSubscriptionNodeTwo);
+    RCLJava.spinOnce(node); // run one of Executable
 
-    while (RCLJava.ok() && !futureOne.isDone() && !futureTwo.isDone()) {
+    while (RCLJava.ok() && !(futureOne.isDone() && futureTwo.isDone())) {
       publisher.publish(msg);
-      executor.spinSome();
+      RCLJava.spinSome(node);
     }
 
     rcljava.msg.UInt32 valueOne = futureOne.get();
