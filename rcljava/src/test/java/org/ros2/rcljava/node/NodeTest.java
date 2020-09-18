@@ -789,7 +789,7 @@ public class NodeTest {
     assertEquals(0, subscription.getHandle());
   }
 
-  @Test
+  @Test(timeout = 1000)
   public final void testPubUInt32MultipleNodes() throws Exception {
     Executor executor = new MultiThreadedExecutor();
 
@@ -837,7 +837,9 @@ public class NodeTest {
     executor.addNode(composableSubscriptionNodeOne);
     executor.addNode(composableSubscriptionNodeTwo);
 
+    publisher.publish(msg);
     executor.spinOnce();
+
     while (RCLJava.ok() && !(futureOne.isDone() && futureTwo.isDone())) {
       publisher.publish(msg);
       executor.spinSome();
